@@ -711,7 +711,7 @@ function TrelloExportOptions() {
         '<td><span data-toggle="tooltip" data-placement="right" data-container="body" title="Choose columns to be exported to Excel">Export columns</span></td>' +
         '<td><select multiple="multiple" id="selectedColumns">' + options.join('') + '</select></td>' +
         '</tr>' +
-        '<tr id="ckHTMLCardInfoRow" style="display:none"><td><span data-toggle="tooltip" data-placement="right" data-container="body" title="Set options for the target HTML">Options:</span></td><td><input type="checkbox" checked id="ckHTMLCardInfo" title="Export card info"> Export card info (created, createdby) <br/><input type="checkbox" checked id="chkHTMLInlineImages" title="Show attachment images"> Show attachment images' + '</td></tr>' +
+        '<tr id="ckHTMLCardInfoRow" style="display:none"><td><span data-toggle="tooltip" data-placement="right" data-container="body" title="Set options for the target HTML">Options:</span></td><td><input type="checkbox" checked id="ckHTMLCardInfo" title="Export card info"> Export card info (labels, created, createdby) <br/><input type="checkbox" checked id="chkHTMLInlineImages" title="Show attachment images"> Show attachment images' + '</td></tr>' +
         '<tr id="renderingOptions" style="display:none"><td><span>Rendering Options:</span></td><td>Stylesheet: <input id="trelloExportCss" type="text" name="css" value="' + theCSS + '"> ' +
         'Template set:<br><input type="text" id="templateSetURL" placeholder="Insert URL or leave blank" title="Template-set URL - leave blank to use local templates" value="' + templateSetURL + '">Template:<br> <select id="twigTemplate" name="twigTemplate">' +
         availableTwigTemplatesOptions.join(',') +
@@ -3151,6 +3151,9 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             sTitle = '### [' + card.cardID + '] ' + card.title.trim() + '\n\n';
         }
         if (bckHTMLCardInfo) {
+            if (card.labels.length > 0) {
+                sTitle += '**Labels:** ' + card.labels.toString() + '\n\n';
+            }
             sTitle += '**Created:** ' + card.datetimeCreated + '\n\n' +
                 '**Created by:** ' + card.memberCreator + '\n\n';
         }
