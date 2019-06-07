@@ -3163,8 +3163,11 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             (card.due !== '' ? '**Due:** ' + new Date(card.due).toLocaleDateString() + ' ' + new Date(card.due).toLocaleTimeString() : '') + '\n\n' +
             (card.datetimeDone !== '' ? '**Completed:** ' + card.datetimeDone + '\n\n' : '') +
             (card.memberDone !== '' ? '**Completed by:** ' + card.memberDone + '\n\n' : '') +
-            (card.completionTimeText !== '' ? '**Elapse:** ' + card.completionTimeText + '\n\n' : '') +
-            (card.cardDescription !== '' ? '**Description:**\n\n' + card.cardDescription + '\n\n' : '');
+            (card.completionTimeText !== '' ? '**Elapse:** ' + card.completionTimeText + '\n\n' : '');
+
+        if (card.cardDescription !== '') {
+            mdOut += '#### Description\n\n'+ card.cardDescription.trim() + '\n\n';
+        }
 
         // checklists
         var i;
