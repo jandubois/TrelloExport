@@ -2024,6 +2024,7 @@ function loadData(exportFormat, bexportArchived, bExportComments, bExportCheckli
                                                 'cardID': card.idShort,
                                                 'title': (exportFormat === 'HTML' ? html_encode(title) : title),
                                                 'shortLink': 'https://trello.com/c/' + card.shortLink,
+                                                'slug': card.shortLink,
                                                 'cardDescription': (exportFormat === 'XLSX' && card.desc ? card.desc.substr(0, MAXCHARSPERCELL) : card.desc),
                                                 'checkLists': (exportFormat === 'XLSX' && checkListsText !== undefined && checkListsText !== '' ? checkListsText.substr(0, MAXCHARSPERCELL) : checkListsText),
                                                 'numberOfComments': numberOfComments,
@@ -3148,7 +3149,7 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             // HTML export: add link to card
             sTitle = '### [ <a target="_blank" href="' + card.shortLink + '">' + card.cardID + '</a> ] ' + card.title.trim() + '\n\n';
         } else {
-            sTitle = '### [' + card.cardID + '] ' + card.title.trim() + '\n\n';
+            sTitle = '### [' + card.slug + '] ' + card.title.trim() + '\n\n';
         }
         if (bckHTMLCardInfo) {
             if (card.labels.length > 0) {
