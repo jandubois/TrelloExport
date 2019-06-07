@@ -3190,18 +3190,6 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             }
         }
 
-        // comments
-        if (card.jsonComments.length > 0) {
-            mdOut += '#### Comments\n';
-            for (i = 0; i < card.jsonComments.length; i++) {
-                var d = card.jsonComments[i].date;
-                if (d)
-                    mdOut += '**' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text + '\n\n';
-                else
-                    mdOut += '**' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text + '\n\n';
-            }
-        }
-
         // attachments
         if (card.jsonAttachments.length > 0) {
             mdOut += '#### Attachments\n\n';
@@ -3220,6 +3208,18 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
 
                 }
 
+            }
+        }
+
+        // comments
+        if (card.jsonComments.length > 0) {
+            mdOut += '#### Comments\n\n';
+            for (i = card.jsonComments.length-1; i >= 0; i--) {
+                var d = card.jsonComments[i].date;
+                if (d)
+                    mdOut += '**' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.trim() + '\n\n';
+                else
+                    mdOut += '**' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.trim() + '\n\n';
             }
         }
 
