@@ -3166,7 +3166,7 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             (card.completionTimeText !== '' ? '**Elapse:** ' + card.completionTimeText + '\n\n' : '');
 
         if (card.cardDescription !== '') {
-            mdOut += '#### Description\n\n'+ card.cardDescription.trim() + '\n\n';
+            mdOut += '#### Description\n\n'+ card.cardDescription.replace(/^#/gm, "#####").trim() + '\n\n';
         }
 
         // checklists
@@ -3217,9 +3217,9 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             for (i = card.jsonComments.length-1; i >= 0; i--) {
                 var d = card.jsonComments[i].date;
                 if (d)
-                    mdOut += '**' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.trim() + '\n\n';
+                    mdOut += '**' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
                 else
-                    mdOut += '**' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.trim() + '\n\n';
+                    mdOut += '**' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
             }
         }
 
