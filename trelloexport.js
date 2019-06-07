@@ -3160,7 +3160,7 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
         }
 
         mdOut += sTitle +
-            (card.due !== '' ? '**Due:** ' + new Date(card.due).toLocaleDateString() + ' ' + new Date(card.due).toLocaleTimeString() : '') + '\n\n' +
+            (card.due !== '' ? '**Due:** ' + new Date(card.due).toLocaleDateString() + ' ' + new Date(card.due).toLocaleTimeString() + '\n\n' : '') +
             (card.datetimeDone !== '' ? '**Completed:** ' + card.datetimeDone + '\n\n' : '') +
             (card.memberDone !== '' ? '**Completed by:** ' + card.memberDone + '\n\n' : '') +
             (card.completionTimeText !== '' ? '**Elapse:** ' + card.completionTimeText + '\n\n' : '');
@@ -3204,7 +3204,7 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
 
         // attachments
         if (card.jsonAttachments.length > 0) {
-            mdOut += '#### Attachments\n';
+            mdOut += '#### Attachments\n\n';
             for (i = 0; i < card.jsonAttachments.length; i++) {
 
                 // console.log('ATTACHMENT = ' + JSON.stringify(card.jsonAttachments[i]) );
