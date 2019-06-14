@@ -3197,20 +3197,12 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
         if (card.jsonAttachments.length > 0) {
             mdOut += '#### Attachments\n\n';
             for (i = 0; i < card.jsonAttachments.length; i++) {
+                mdOut += '[' + card.jsonAttachments[i].name + '](' + card.jsonAttachments[i].url + ')\n\n';
 
                 // console.log('ATTACHMENT = ' + JSON.stringify(card.jsonAttachments[i]) );
                 if (bchkHTMLInlineImages && isImage(card.jsonAttachments[i].name)) {
-
-                    var sImg = '![' + card.jsonAttachments[i].name + '](' + card.jsonAttachments[i].url + ')';
-
-                    mdOut += '**' + card.jsonAttachments[i].name + '** (' + Number(card.jsonAttachments[i].bytes / 1024).toFixed(2) + ' kb) [download](' + card.jsonAttachments[i].url + ')\n\n' + sImg + '\n\n';
-
-                } else {
-
-                    mdOut += '**' + card.jsonAttachments[i].name + '** (' + Number(card.jsonAttachments[i].bytes / 1024).toFixed(2) + ' kb) [download](' + card.jsonAttachments[i].url + ')\n\n';
-
+                    mdOut += '![' + card.jsonAttachments[i].name + '](' + card.jsonAttachments[i].url + ')\n\n';
                 }
-
             }
         }
 
