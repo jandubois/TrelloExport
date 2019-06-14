@@ -3220,9 +3220,9 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             for (i = card.jsonComments.length-1; i >= 0; i--) {
                 var d = card.jsonComments[i].date;
                 if (d)
-                    mdOut += '**' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
+                    mdOut += '*' + d + ' ' + card.jsonComments[i].memberCreator.fullName + '*\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
                 else
-                    mdOut += '**' + card.jsonComments[i].memberCreator.fullName + '**\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
+                    mdOut += '*' + card.jsonComments[i].memberCreator.fullName + '*\n\n' + card.jsonComments[i].text.replace(/^#/gm, "#####").trim() + '\n\n';
             }
         }
 
