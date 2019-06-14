@@ -3155,8 +3155,11 @@ function createMarkdownExport(jsonComputedCards, bPrint, bckHTMLCardInfo, bchkHT
             if (card.labels.length > 0) {
                 sTitle += '**Labels:** ' + card.labels.toString() + '\n\n';
             }
-            sTitle += '**Created:** ' + card.datetimeCreated + '\n\n' +
-                '**Created by:** ' + card.memberCreator + '\n\n';
+            sTitle += '*Created:* ' + card.datetimeCreated
+            if (card.memberCreator.length > 0) {
+                sTitle += ' *by* ' + card.memberCreator
+            }
+            sTitle += '\n\n';
         }
 
         mdOut += sTitle +
